@@ -4,7 +4,8 @@ import GlobalStyles from "../Styles/GlobalStyles";
 import { StyleTheme } from "../Styles/Theme";
 import AppRouter from "./Router";
 
-import { gql, useQuery } from "@apollo/client";
+import { cache } from "../Apollo/Client";
+import { gql } from "@apollo/client";
 
 const QUERY = gql`
     {
@@ -13,10 +14,7 @@ const QUERY = gql`
 `;
 
 function App() {
-    const {
-        data: { isLoggedIn },
-    } = useQuery(QUERY);
-
+    const { isLoggedIn } = cache.readQuery({ query: QUERY });
     console.log(isLoggedIn);
 
     return (
