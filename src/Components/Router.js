@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
-import Footer from "./Footer";
 
 const LoggedInRoutes = () => {
     return (

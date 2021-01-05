@@ -11,10 +11,16 @@ const Container = styled.input`
     padding: 0 15px;
 `;
 
-const Input = ({ placeholder }) => {
+const Input = ({ placeholder, required = true, value, onChange, type }) => {
     return (
         <>
-            <Container placeholder={placeholder}></Container>
+            <Container
+                type={type}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+                required={required}
+            ></Container>
         </>
     );
 };
