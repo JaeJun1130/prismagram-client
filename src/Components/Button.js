@@ -13,8 +13,8 @@ const Container = styled.button`
     font-size: 14px;
 `;
 
-const Button = ({ text }) => {
-    return <Container>{text}</Container>;
+const Button = ({ text, onClick }) => {
+    return <Container onClick={onClick}>{text}</Container>;
 };
 
 export default Button;

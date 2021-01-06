@@ -1,10 +1,9 @@
 import React from "react";
-
 import styled from "styled-components";
+
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 import Logo from "../../Components/Logo";
-import { UserInput } from "../../Hooks/UserInput";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -44,47 +43,47 @@ const Link = styled.span`
     cursor: pointer;
 `;
 
-
-const AuthPresenter = ({ action, setAction }) => {
-    const username = UserInput("");
-    const password = UserInput("");
-
-    const firstName = UserInput("");
-    const lastName = UserInput("");
-    const Email = UserInput("");
-
-    console.log(username, password, firstName, lastName, Email);
-
+const AuthPresenter = ({ action, setAction, username, firstName, lastName, email, onSubmit }) => {
     return (
         <>
             <Wrapper>
                 <Form>
-                <Logo/>
+                    <Logo />
                     {action === "login" ? (
-                        <form>
-                            <Input placeholder={"Username"} {...username}></Input>
-                            <Input placeholder={"PassWord"} {...password} type="password"></Input>
-                            <Button text={"로그인"}></Button>
-                        </form>
+                        <>
+                            <Input placeholder={"Email"} {...email} type="email"></Input>
+                            <Button
+                                onClick={(e) => {
+                                    onSubmit(e, "login");
+                                }}
+                                text={"로그인"}
+                            ></Button>
+                        </>
                     ) : (
-                        <form>
+                        <>
                             <Input placeholder={"First name"} {...firstName}></Input>
                             <Input placeholder={"Last name"} {...lastName}></Input>
-                            <Input placeholder={"Email"} {...Email} type="email"></Input>
+                            <Input placeholder={"Email"} {...email} type="email"></Input>
                             <Input placeholder={"Username"} {...username}></Input>
-                            <Input placeholder={"Password"} {...password} type="password"></Input>
-                            <Button text={"회원가입"}></Button>
-                        </form>
+                            <Button
+                                onClick={(e) => {
+                                    onSubmit(e, "join");
+                                }}
+                                text={"회원가입"}
+                            ></Button>
+                        </>
                     )}
                 </Form>
                 <StateChanger>
                     {action === "login" ? (
                         <>
-                            계정이 없으신가요? <Link onClick={() => setAction("signUp")}>가입하기</Link>
+                            계정이 없으신가요?{" "}
+                            <Link onClick={() => setAction("signUp")}>가입하기</Link>
                         </>
                     ) : (
                         <>
-                            계정이 있으신가요? <Link onClick={() => setAction("login")}>로그인</Link>
+                            계정이 있으신가요?{" "}
+                            <Link onClick={() => setAction("login")}>로그인</Link>
                         </>
                     )}
                 </StateChanger>
