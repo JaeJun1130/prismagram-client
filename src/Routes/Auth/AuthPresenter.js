@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
+import Logo from "../../Components/Logo";
 import { UserInput } from "../../Hooks/UserInput";
 
 const Wrapper = styled.div`
@@ -21,16 +22,6 @@ const Box = styled.div`
     width: 100%;
 `;
 
-const StateChanger = styled(Box)`
-    text-align: center;
-    padding: 20px 0px; ;
-`;
-
-const Link = styled.span`
-    color: ${(props) => props.theme.blueColor};
-    cursor: pointer;
-`;
-
 const Form = styled(Box)`
     padding: 40px;
     padding-bottom: 30px;
@@ -42,6 +33,17 @@ const Form = styled(Box)`
         }
     }
 `;
+
+const StateChanger = styled(Box)`
+    text-align: center;
+    padding: 20px 0px; ;
+`;
+
+const Link = styled.span`
+    color: ${(props) => props.theme.blueColor};
+    cursor: pointer;
+`;
+
 
 const AuthPresenter = ({ action, setAction }) => {
     const username = UserInput("");
@@ -57,6 +59,7 @@ const AuthPresenter = ({ action, setAction }) => {
         <>
             <Wrapper>
                 <Form>
+                <Logo/>
                     {action === "login" ? (
                         <form>
                             <Input placeholder={"Username"} {...username}></Input>
