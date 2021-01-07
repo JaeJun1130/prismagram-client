@@ -51,7 +51,7 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
             <Wrapper>
                 <Form>
                     <Logo />
-                    {action === LOGIN ? (
+                    {action === LOGIN && (
                         <>
                             <Input placeholder={"Email"} {...email} type="email"></Input>
                             <Button
@@ -61,7 +61,8 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
                                 text={"로그인"}
                             ></Button>
                         </>
-                    ) : (
+                    )}
+                    {action === JOIN && (
                         <>
                             <Input placeholder={"First name"} {...firstName}></Input>
                             <Input placeholder={"Last name"} {...lastName}></Input>
@@ -77,11 +78,12 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
                     )}
                 </Form>
                 <StateChanger>
-                    {action === LOGIN ? (
+                    {action === LOGIN && (
                         <>
                             계정이 없으신가요? <Link onClick={() => setAction(JOIN)}>가입하기</Link>
                         </>
-                    ) : (
+                    )}
+                    {action == JOIN && (
                         <>
                             계정이 있으신가요? <Link onClick={() => setAction(LOGIN)}>로그인</Link>
                         </>
