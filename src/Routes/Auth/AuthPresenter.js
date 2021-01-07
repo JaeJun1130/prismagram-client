@@ -4,6 +4,10 @@ import styled from "styled-components";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 import Logo from "../../Components/Logo";
+import { LOGIN,JOIN } from "./AuthContainer";
+
+
+import { toast } from 'react-toastify';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -12,7 +16,6 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid red;
 `;
 const Box = styled.div`
     ${(props) => props.theme.whiteBox}
@@ -22,7 +25,7 @@ const Box = styled.div`
 `;
 
 const Form = styled(Box)`
-    padding: 40px;
+    padding: 40px ;
     padding-bottom: 30px;
     margin-bottom: 15px;
     input {
@@ -49,12 +52,12 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
             <Wrapper>
                 <Form>
                     <Logo />
-                    {action === "login" ? (
+                    {action === LOGIN ? (
                         <>
                             <Input placeholder={"Email"} {...email} type="email"></Input>
                             <Button
                                 onClick={(e) => {
-                                    onSubmit(e, "login");
+                                    onSubmit(e, LOGIN);
                                 }}
                                 text={"로그인"}
                             ></Button>
@@ -67,7 +70,7 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
                             <Input placeholder={"Username"} {...username}></Input>
                             <Button
                                 onClick={(e) => {
-                                    onSubmit(e, "join");
+                                    onSubmit(e, JOIN);
                                 }}
                                 text={"회원가입"}
                             ></Button>
@@ -75,15 +78,15 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
                     )}
                 </Form>
                 <StateChanger>
-                    {action === "login" ? (
+                    {action === JOIN ? (
                         <>
                             계정이 없으신가요?{" "}
-                            <Link onClick={() => setAction("signUp")}>가입하기</Link>
+                            <Link onClick={() => setAction(LOGIN)}>가입하기</Link>
                         </>
                     ) : (
                         <>
                             계정이 있으신가요?{" "}
-                            <Link onClick={() => setAction("login")}>로그인</Link>
+                            <Link onClick={() => setAction(JOIN)}>로그인</Link>
                         </>
                     )}
                 </StateChanger>

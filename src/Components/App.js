@@ -8,11 +8,13 @@ import { cache } from "../Apollo/Client";
 import { gql } from "@apollo/client";
 import Footer from "./Footer";
 
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Wrapper = styled.div`
     margin: 0 auto;
     max-width: 935px; //max가 935
     width: 100%;
-    border: 1px solid black;
 `;
 
 const QUERY = gql`
@@ -31,6 +33,7 @@ function App() {
                 <AppRouter isLoggedIn={isLoggedIn} />
                 <GlobalStyles />
                 <Footer />
+                <ToastContainer position="top-center"/>
             </ThemeProvider>
         </Wrapper>
     );
