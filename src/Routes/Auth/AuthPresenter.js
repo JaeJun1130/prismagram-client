@@ -4,10 +4,9 @@ import styled from "styled-components";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 import Logo from "../../Components/Logo";
-import { LOGIN,JOIN } from "./AuthContainer";
+import { LOGIN, JOIN } from "./AuthContainer";
 
-
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -25,7 +24,7 @@ const Box = styled.div`
 `;
 
 const Form = styled(Box)`
-    padding: 40px ;
+    padding: 40px;
     padding-bottom: 30px;
     margin-bottom: 15px;
     input {
@@ -78,15 +77,13 @@ const AuthPresenter = ({ action, setAction, username, firstName, lastName, email
                     )}
                 </Form>
                 <StateChanger>
-                    {action === JOIN ? (
+                    {action === LOGIN ? (
                         <>
-                            계정이 없으신가요?{" "}
-                            <Link onClick={() => setAction(LOGIN)}>가입하기</Link>
+                            계정이 없으신가요? <Link onClick={() => setAction(JOIN)}>가입하기</Link>
                         </>
                     ) : (
                         <>
-                            계정이 있으신가요?{" "}
-                            <Link onClick={() => setAction(JOIN)}>로그인</Link>
+                            계정이 있으신가요? <Link onClick={() => setAction(LOGIN)}>로그인</Link>
                         </>
                     )}
                 </StateChanger>
