@@ -8,8 +8,8 @@ import { cache } from "../Apollo/Client";
 import { gql } from "@apollo/client";
 import Footer from "./Footer";
 
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -17,7 +17,13 @@ const Wrapper = styled.div`
     width: 100%;
 `;
 
-const QUERY = gql`
+export const QUERY = gql`
+    {
+        isLoggedIn @client
+    }
+`;
+
+const TESTQUERY = gql`
     {
         isLoggedIn @client
     }
@@ -33,7 +39,7 @@ function App() {
                 <AppRouter isLoggedIn={isLoggedIn} />
                 <GlobalStyles />
                 <Footer />
-                <ToastContainer position="top-center"/>
+                <ToastContainer position="top-center" />
             </ThemeProvider>
         </Wrapper>
     );
