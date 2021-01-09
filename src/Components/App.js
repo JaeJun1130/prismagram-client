@@ -23,14 +23,14 @@ export const QUERY = gql`
     }
 `;
 
-const TESTQUERY = gql`
-    {
-        isLoggedIn @client
-    }
-`;
-
 function App() {
     const { isLoggedIn } = cache.readQuery({ query: QUERY });
+    // const { isLoggedIn } = cache.writeQuery({
+    //     query: QUERY,
+    //     data: {
+    //         isLoggedIn: !!localStorage.getItem("token"),
+    //     },
+    // });
     console.log(isLoggedIn);
 
     return (

@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import { CONFIRM_SECERT, CREATE_ACCOUNT, LOG_IN } from "./AuthMutation";
 
 import { toast } from "react-toastify";
-import { cache } from "../../Apollo/Client";
 
 export const LOGIN = "LOGIN";
 export const JOIN = "JOIN";
@@ -67,7 +66,7 @@ const AuthContainer = () => {
                             data: { requestSecret },
                         } = await requestSecretMutation();
                         if (!requestSecret || !a) {
-                            toast.error("이메일을 다시 입력해주세요");
+                            toast.error("이메일을 다시 확인하세요");
                         } else if (requestSecret && a) {
                             toast.success("메일이 전송 되었습니다.");
                             setTimeout(() => {
