@@ -10,11 +10,14 @@ import Footer from "./Footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 const Wrapper = styled.div`
-    margin: 0 auto;
-    max-width: 935px; //max가 935
     width: 100%;
+    margin: 0 auto;
+    max-width: ${(props) => props.theme.maxWidth}; //max가 935
 `;
 
 export const QUERY = gql`
@@ -34,14 +37,21 @@ function App() {
     console.log(isLoggedIn);
 
     return (
-        <Wrapper>
-            <ThemeProvider theme={StyleTheme}>
-                <AppRouter isLoggedIn={isLoggedIn} />
+        <ThemeProvider theme={StyleTheme}>
+            <>
                 <GlobalStyles />
-                <Footer />
+                <Router>
+                    <>
+                        <Header />
+                        <Wrapper>
+                            <AppRouter isLoggedIn={isLoggedIn} />
+                            <Footer />
+                        </Wrapper>
+                    </>
+                </Router>
                 <ToastContainer position="top-center" />
-            </ThemeProvider>
-        </Wrapper>
+            </>
+        </ThemeProvider>
     );
 }
 
