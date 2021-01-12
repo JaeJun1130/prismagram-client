@@ -1,3 +1,3 @@
-import AuthContainer from "./AuthContainer";
+import ExploreContainer from "./ExploreContainer";
 
-export default AuthContainer;
+export default ExploreContainer;
