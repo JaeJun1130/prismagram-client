@@ -1,11 +1,11 @@
-import React, { useState, useQuery } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 
 import Input from "./Input";
 import { Explore, Heart, Instar, Message, Parson, Home } from "./Icons";
 
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 const HeaderSy = styled.header`
   width: 100%;
@@ -63,7 +63,7 @@ const HeaderLink = styled(Link)`
 `;
 
 const ME = gql`
-  {
+  query me {
     me {
       username
     }
@@ -72,9 +72,9 @@ const ME = gql`
 
 const Header = withRouter(({ history }) => {
   const [search, setSerach] = useState("");
-  const {
-    data: { me },
-  } = useQuery(ME);
+  const { data } = useQuery(ME);
+  console.log(data);
+
   const onSearchSubmit = (e) => {
     e.preventDefault();
     history.push(`/search?them=${search}`);
@@ -113,12 +113,12 @@ const Header = withRouter(({ history }) => {
             <HeaderLink to="/explore">
               <Heart />
             </HeaderLink>
-            {!me ? (
+            {!data ? (
               <HeaderLink to="/username">
                 <Parson />
               </HeaderLink>
             ) : (
-              <HeaderLink to={me}>
+              <HeaderLink to={data.me.username}>
                 <Parson />
               </HeaderLink>
             )}
