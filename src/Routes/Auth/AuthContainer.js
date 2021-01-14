@@ -131,7 +131,6 @@ const AuthContainer = () => {
           localStorage.removeItem("token");
         }
       }
-      default:
     }
   };
 
