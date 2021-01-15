@@ -1,6 +1,7 @@
 import React from "react";
 import Loader from "../../Components/Loader";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 
 import Post from "../../Components/Post";
 
@@ -18,6 +19,9 @@ const FeedPresenter = ({ data, loading }) => {
   console.log(data);
   return (
     <Wrapper>
+      <Helmet>
+        <title>Feed</title>
+      </Helmet>
       {loading && <Loader />}
       {!loading &&
         data &&
