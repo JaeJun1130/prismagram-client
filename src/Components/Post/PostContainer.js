@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostPresenter from "./PostPresenter";
 
 const PostContainer = ({
@@ -15,6 +15,19 @@ const PostContainer = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [comment, setComment] = useState([]);
+
+  const [currentItem, setCurrentItem] = useState(0);
+  const totalFile = files.length;
+
+  const nextSilde = () => {
+    setCurrentItem(currentItem === totalFile - 1 ? 0 : currentItem + 1);
+    console.log(currentItem);
+  };
+  const prevSlide = () => {
+    setCurrentItem(currentItem === 0 ? totalFile - 1 : currentItem - 1);
+    console.log(currentItem);
+  };
+
   return (
     <PostPresenter
       user={user}
@@ -29,6 +42,10 @@ const PostContainer = ({
       setLikeCount={setLikeCount}
       comment={comment}
       setComment={setComment}
+      currentItem={currentItem}
+      nextSilde={nextSilde}
+      prevSlide={prevSlide}
+      totalFile={totalFile}
     />
   );
 };
